@@ -8,9 +8,6 @@ from docx_extractor import extract_text_from_docx
 from xlsx_extractor import extract_data_from_excel
 from util import extractor
 
-def get_file_extension(file_path):
-    return os.path.splitext(file_path)[1].lower()
-
 EXTRACTORS = {
     '.pdf': extract_text_from_pdf,
     '.pptx': extract_text_from_pptx,
@@ -26,14 +23,14 @@ FILE_TYPES = {
 }
 
 def main():
-    if len(sys.argv) != 3:
-        print("Usage: ./main.py <input_file_name_and_extension> <output_file_name>.json")
+    if len(sys.argv) != 2:
+        print("Usage: ./main.py <input_file_name_and_extension>")
         sys.exit(1)
 
     input_file = sys.argv[1]
-    output_file = sys.argv[2]
+    output_file = input_file + ".json"
 
-    file_extension = get_file_extension(input_file)
+    file_extension = os.path.splitext(input_file)[1].lower()
 
     if file_extension not in EXTRACTORS:
         print(f"Error: Unsupported file type '{file_extension}'")

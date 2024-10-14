@@ -28,9 +28,7 @@ Each extractor script contains a specific function to extract data from its resp
 
 ## Usage
 
-`python3 main.py <input_file_name> <output_file_name>.json`
+`python3 main.py <input_file_name_and_extension>`
 
-Working example with test documents:
-- `python3 main.py test_documents/test.docx test.json`
-
-Note that you will always specify <output_name>**.json** for the output file since everything is a json. It is manually entered for consistency with the `<input_file_name>`.
+Working example with test document (outputs to `test_documents/test.docx.json`):
+- `python3 main.py test_documents/test.docx`
